@@ -11,7 +11,172 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+        assertEquals("foo", app.items[0].name);
+    }
+
+
+    // test pour les items standard
+    @Test
+    void testStandardItem() {
+        Item[] items = new Item[] { new Item("foo", 10, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(9, app.items[0].quality);
+    }
+
+    @Test
+    void testStandardItemQuality1() {
+        Item[] items = new Item[] { new Item("foo", 10, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    void testItemQuality0() {
+        Item[] items = new Item[] { new Item("foo", 0, 0) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    void testStandardItemSellInStandard() {
+        Item[] items = new Item[] { new Item("foo", 10, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(9, app.items[0].sellIn);
+    }
+
+    @Test
+    void testStandardItemSellIn0() {
+        Item[] items = new Item[] { new Item("foo", 0, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(8, app.items[0].quality);
+    }
+
+    @Test
+    void testStandardItemSellInNegative() {
+        Item[] items = new Item[] { new Item("foo", -5, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(8, app.items[0].quality);
+    }
+
+    // test pour AGED_BRIE
+    @Test
+    void testAgedBrieQuality50() {
+        Item[] items = new Item[] { new Item(GildedRose.AGED_BRIE, 10, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
+    void testAgedBrieQualityStandard() {
+        Item[] items = new Item[] { new Item(GildedRose.AGED_BRIE, 10, 30) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(31, app.items[0].quality);
+    }
+
+    @Test
+    void testAgedBrieSellIn0() {
+        Item[] items = new Item[] { new Item(GildedRose.AGED_BRIE, 0, 30) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(32, app.items[0].quality);
+    }
+
+    // test pour BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT
+    @Test
+    void testBackstageQuality50() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 10, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstageSellInStandard() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 30, 20) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(21, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstageSellIn10() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 10, 20) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(22, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstageSellIn10Quality49() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 10, 49) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstageSellIn5() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 5, 20) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(23, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstageSellIn5Quality49() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 5, 49) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
+    void testBackstageSellIn0() {
+        Item[] items = new Item[] { new Item(GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT, 0, 20) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
+
+    // test pour SULFURAS_HAND_OF_RAGNAROS
+    @Test
+    void testSulfurasQuality() {
+        Item[] items = new Item[] { new Item(GildedRose.SULFURAS_HAND_OF_RAGNAROS, 10, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5, app.items[0].quality);
+    }
+
+    @Test
+    void testSulfurasSellInStandard() {
+        Item[] items = new Item[] { new Item(GildedRose.SULFURAS_HAND_OF_RAGNAROS, 10, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(10, app.items[0].sellIn);
+    }
+
+    @Test
+    void testSulfurasSellIn0() {
+        Item[] items = new Item[] { new Item(GildedRose.SULFURAS_HAND_OF_RAGNAROS, 5, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5, app.items[0].quality);
+    }
+
+    @Test
+    void testSulfurasSellInNegative() {
+        Item[] items = new Item[] { new Item(GildedRose.SULFURAS_HAND_OF_RAGNAROS, -5, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5, app.items[0].quality);
     }
 
 }
