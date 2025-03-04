@@ -149,34 +149,18 @@ class GildedRoseTest {
     // test pour SULFURAS_HAND_OF_RAGNAROS
     @Test
     void testSulfurasQuality() {
-        Item[] items = new Item[] { new Ragnaros(10, 5) };
+        Item[] items = new Item[] { new Sulfuras() };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(5, app.items[0].quality);
+        assertEquals(80, app.items[0].quality);
     }
 
     @Test
-    void testSulfurasSellInStandard() {
-        Item[] items = new Item[] { new Ragnaros(10, 5) };
+    void testSulfurasSellIn() {
+        Item[] items = new Item[] { new Sulfuras() };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(10, app.items[0].sellIn);
-    }
-
-    @Test
-    void testSulfurasSellIn0() {
-        Item[] items = new Item[] { new Ragnaros(5, 5) };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(5, app.items[0].quality);
-    }
-
-    @Test
-    void testSulfurasSellInNegative() {
-        Item[] items = new Item[] { new Ragnaros(-5, 5) };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(5, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
     }
 
 }
