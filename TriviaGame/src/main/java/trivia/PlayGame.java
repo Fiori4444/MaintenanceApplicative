@@ -1,5 +1,7 @@
 package trivia;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,10 +21,16 @@ public class PlayGame {
 
       IGame aGame = new Game();
 
+      boolean res;
       for (int i = 1; i <= playerCount; i++) {
          System.out.print("Player "+i+" name: ");
          String playerName = scanner.nextLine();
-         aGame.addPlayer(playerName);
+         res = aGame.addPlayer(playerName);
+         while (!res){
+            System.err.println("Player "+playerName+" already exists");
+            playerName = scanner.nextLine();
+            res = aGame.addPlayer(playerName);
+         }
       }
       if (!((Game) aGame).isPlayable()) throw new IllegalArgumentException("Less than 2 or more thant 6 players");
 

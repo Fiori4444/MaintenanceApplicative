@@ -50,12 +50,16 @@ public class Game implements IGame {
     }
 
     public boolean addPlayer(String playerName) {
-        boolean result = false;
-        if (!gameStarted) {
+        boolean result = true;
+        for (Player player : players) {
+            if (player.getName().equals(playerName)) {
+                result = false;
+            }
+        }
+        if (!gameStarted && result) {
             players.add(new Player(playerName));
             System.out.println(playerName + " was added");
             System.out.println("They are player number " + players.size());
-            result = true;
         }
         return result;
     }
