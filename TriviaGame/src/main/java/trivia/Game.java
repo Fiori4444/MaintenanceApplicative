@@ -20,8 +20,28 @@ public class Game implements IGame {
         }
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public boolean getIsGettingOutOfPenaltyBox() {
+        return isGettingOutOfPenaltyBox;
+    }
+
+    public void setIsGettingOutOfPenaltyBox(boolean isGettingOutOfPenaltyBox) {
+        this.isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox;
+    }
+
     public boolean isPlayable() {
-        return (howManyPlayers() >= 2);
+        return (howManyPlayers() >= 2 && howManyPlayers() < 6);
     }
 
     public boolean addPlayer(String playerName) {
