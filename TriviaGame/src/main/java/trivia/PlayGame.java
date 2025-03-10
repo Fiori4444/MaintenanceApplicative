@@ -27,7 +27,7 @@ public class PlayGame {
       if (!((Game) aGame).isPlayable()) throw new IllegalArgumentException("Less than 2 or more thant 6 players");
 
       System.out.println("\n\n--Starting game--");
-
+      ((Game) aGame).setGameStarted(true);
 
       boolean notAWinner;
       do {

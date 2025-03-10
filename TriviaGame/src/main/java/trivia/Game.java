@@ -9,6 +9,7 @@ public class Game implements IGame {
 
     private int currentPlayer = 0;
     private boolean isGettingOutOfPenaltyBox;
+    private boolean gameStarted = false;
 
     public Game() {
         for (Categories category : Categories.values()) {
@@ -40,15 +41,23 @@ public class Game implements IGame {
         this.isGettingOutOfPenaltyBox = isGettingOutOfPenaltyBox;
     }
 
+    public void setGameStarted(boolean gameStarted) {
+        this.gameStarted = gameStarted;
+    }
+
     public boolean isPlayable() {
         return (howManyPlayers() >= 2 && howManyPlayers() < 6);
     }
 
     public boolean addPlayer(String playerName) {
-        players.add(new Player(playerName));
-        System.out.println(playerName + " was added");
-        System.out.println("They are player number " + players.size());
-        return true;
+        boolean result = false;
+        if (!gameStarted) {
+            players.add(new Player(playerName));
+            System.out.println(playerName + " was added");
+            System.out.println("They are player number " + players.size());
+            result = true;
+        }
+        return result;
     }
 
     public int howManyPlayers() {
