@@ -6,6 +6,7 @@ public class TitreEvenement {
     public TitreEvenement(String title) {
         this.title = title;
     }
+
     public String getTitle() {
         return title;
     }

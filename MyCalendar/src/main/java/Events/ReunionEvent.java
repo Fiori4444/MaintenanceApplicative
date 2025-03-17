@@ -1,16 +1,19 @@
 package Events;
 
+import ValueObjects.LieuEvenement;
+import ValueObjects.ParticipantsEvenement;
+
 import java.time.LocalDateTime;
 
 public class ReunionEvent extends Event {
 
-    public String lieu; // utilisé seulement pour REUNION
-    public String participants; // séparés par virgules (pour REUNION uniquement)
+    public LieuEvenement lieu; // utilisé seulement pour REUNION
+    public ParticipantsEvenement participants; // séparés par virgules (pour REUNION uniquement)
 
-    public ReunionEvent(/*String type,*/ String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants) {
-        super(/*type,*/ title, proprietaire, dateDebut, dureeMinutes);
-        this.lieu = lieu;
-        this.participants = participants;
+    public ReunionEvent(String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants) {
+        super(title, proprietaire, dateDebut, dureeMinutes);
+        this.lieu.setLieu(lieu);
+        this.participants.setParticipants(participants);
     }
 
     public String description() {

@@ -1,14 +1,16 @@
 package Events;
 
+import ValueObjects.FrequenceEvenement;
+
 import java.time.LocalDateTime;
 
 public class PeriodiqueEvent extends Event {
 
-    public int frequenceJours; // uniquement pour PERIODIQUE
+    private FrequenceEvenement frequenceJours; // uniquement pour PERIODIQUE
 
-    public PeriodiqueEvent(/*String type,*/ String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, String participants, int frequenceJours) {
-        super(/*type,*/ title, proprietaire, dateDebut, dureeMinutes);
-        this.frequenceJours = frequenceJours;
+    public PeriodiqueEvent(String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, int frequenceJours) {
+        super(title, proprietaire, dateDebut, dureeMinutes);
+        this.frequenceJours.setFrequenceJours(frequenceJours);
     }
 
     public String description() {
