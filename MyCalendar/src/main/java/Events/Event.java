@@ -1,3 +1,6 @@
+package Events;
+
+import ValueObjects.*;
 import java.time.LocalDateTime;
 
 public abstract class Event {
@@ -8,10 +11,10 @@ public abstract class Event {
     public int dureeMinutes;
 //    public String lieu; // utilisé seulement pour REUNION
 //    public String participants; // séparés par virgules (pour REUNION uniquement)
-    public int frequenceJours; // uniquement pour PERIODIQUE
+//    public int frequenceJours; // uniquement pour PERIODIQUE
 
-    public Event(/*String type,*/ String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes,
-                 /*String lieu, String participants,*/ int frequenceJours) {
+    public Event(/*String type,*/ String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes
+                 /*String lieu, String participants,*/) {
 //        this.type = type;
         this.title = title;
         this.proprietaire = proprietaire;
@@ -19,7 +22,7 @@ public abstract class Event {
         this.dureeMinutes = dureeMinutes;
 //        this.lieu = lieu;
 //        this.participants = participants;
-        this.frequenceJours = frequenceJours;
+//        this.frequenceJours = frequenceJours;
     }
 
 //    public String description() {
