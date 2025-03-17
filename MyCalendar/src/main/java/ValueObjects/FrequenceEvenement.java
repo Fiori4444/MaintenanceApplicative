@@ -1,17 +1,17 @@
 package ValueObjects;
 
 public class FrequenceEvenement {
-    private int frequenceJours;
+    private int frequence;
 
-    public FrequenceEvenement(int frequenceJours) {
-        this.frequenceJours = frequenceJours;
+    public FrequenceEvenement(int frequence) {
+        this.frequence = frequence;
     }
 
-    public int getFrequenceJours() {
-        return frequenceJours;
+    public int getFrequence() {
+        return frequence;
     }
 
-    public void setFrequenceJours(int frequenceJours) {
-        this.frequenceJours = frequenceJours;
+    public void setFrequence(int frequence) {
+        this.frequence = frequence;
     }
 }

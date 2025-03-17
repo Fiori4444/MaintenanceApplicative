@@ -1,17 +1,19 @@
 package ValueObjects;
 
-public class ParticipantsEvenement {
-    private String participants;
+import java.util.ArrayList;
 
-    public ParticipantsEvenement(String participants) {
+public class ParticipantsEvenement {
+    private ArrayList<String> participants;
+
+    public ParticipantsEvenement(ArrayList<String> participants) {
         this.participants = participants;
     }
 
-    public String getParticipants() {
+    public ArrayList<String> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(String participants) {
+    public void setParticipants(ArrayList<String> participants) {
         this.participants = participants;
     }
 }
