@@ -1,5 +1,6 @@
 package Events;
 
+import ValueObjects.FrequenceEvenement;
 import ValueObjects.LieuEvenement;
 import ValueObjects.ParticipantsEvenement;
 
@@ -13,11 +14,19 @@ public class ReunionEvent extends Event {
 
     public ReunionEvent(String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes, String lieu, ArrayList<String> participants) {
         super(title, proprietaire, dateDebut, dureeMinutes);
-        this.lieu.setLieu(lieu);
-        this.participants.setParticipants(participants);
+        this.lieu = new LieuEvenement(lieu);
+        this.participants = new ParticipantsEvenement(participants);
     }
 
     public String description() {
-        return "Réunion : " + title + " à " + lieu + " avec " + participants;
+        String res = "";
+        res = "Réunion : " + title.getTitle() + " à " + lieu.getLieu() + " avec ";
+        for (int i = 0; i < participants.getParticipants().size(); i++) {
+            res += participants.getParticipants().get(i);
+            if (i != participants.getParticipants().size() - 1) {
+                res += ", ";
+            }
+        }
+        return res;
     }
 }

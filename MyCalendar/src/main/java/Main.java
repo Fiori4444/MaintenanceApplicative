@@ -1,7 +1,11 @@
 import Events.Event;
+import Events.PeriodiqueEvent;
+import Events.PersonnelEvent;
+import Events.ReunionEvent;
 
 import java.time.LocalDateTime;
 import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -124,7 +128,7 @@ public class Main {
                                 LocalDateTime debutMois = LocalDateTime.of(anneeMois, mois, 1, 0, 0);
                                 LocalDateTime finMois = debutMois.plusMonths(1).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutMois, finMois));
+                                afficherListe(calendar.events.eventsDansPeriode(debutMois, finMois));
                                 break;
 
                             case "3":
@@ -140,7 +144,7 @@ public class Main {
                                         .withHour(0).withMinute(0);
                                 LocalDateTime finSemaine = debutSemaine.plusDays(7).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutSemaine, finSemaine));
+                                afficherListe(calendar.events.eventsDansPeriode(debutSemaine, finSemaine));
                                 break;
 
                             case "4":
@@ -154,7 +158,7 @@ public class Main {
                                 LocalDateTime debutJour = LocalDateTime.of(anneeJour, moisJour, jour, 0, 0);
                                 LocalDateTime finJour = debutJour.plusDays(1).minusSeconds(1);
 
-                                afficherListe(calendar.eventsDansPeriode(debutJour, finJour));
+                                afficherListe(calendar.events.eventsDansPeriode(debutJour, finJour));
                                 break;
                         }
                         break;
@@ -176,9 +180,8 @@ public class Main {
                         System.out.print("Durée (en minutes) : ");
                         int duree = Integer.parseInt(scanner.nextLine());
 
-                        calendar.ajouterEvent("RDV_PERSONNEL", titre, utilisateur,
-                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree,
-                                "", "", 0);
+                        calendar.ajouterEvent(new PersonnelEvent(titre, utilisateur,
+                                LocalDateTime.of(annee, moisRdv, jourRdv, heure, minute), duree));
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -202,19 +205,19 @@ public class Main {
                         System.out.println("Lieu :");
                         String lieu = scanner.nextLine();
                         
-                        String participants = utilisateur;
+                        ArrayList<String> participants = new ArrayList<>();
+                        participants.add(utilisateur);
                         
                         boolean encore = true;
                         System.out.println("Ajouter un participant ? (oui / non)");
                         while (scanner.nextLine().equals("oui"))
                         {
                             System.out.print("Participants : " + participants);
-                            participants += ", " + scanner.nextLine();
+                            participants.add(", " + scanner.nextLine());
                         }
 
-                        calendar.ajouterEvent("REUNION", titre2, utilisateur,
-                                LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), duree2,
-                                lieu, participants, 0);
+                        calendar.ajouterEvent(new ReunionEvent(titre2, utilisateur,
+                                LocalDateTime.of(annee2, moisRdv2, jourRdv2, heure2, minute2), duree2, lieu, participants));
 
                         System.out.println("Événement ajouté.");
                         break;
@@ -236,9 +239,8 @@ public class Main {
                         System.out.print("Frequence (en jours) : ");
                         int frequence = Integer.parseInt(scanner.nextLine());
 
-                        calendar.ajouterEvent("PERIODIQUE", titre3, utilisateur,
-                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0,
-                                "", "", frequence);
+                        calendar.ajouterEvent(new PeriodiqueEvent(titre3, utilisateur,
+                                LocalDateTime.of(annee3, moisRdv3, jourRdv3, heure3, minute3), 0, frequence));
 
                         System.out.println("Événement ajouté.");
                         break;

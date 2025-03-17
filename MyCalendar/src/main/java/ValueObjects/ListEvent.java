@@ -1,7 +1,6 @@
 package ValueObjects;
 
 import Events.Event;
-import com.sun.beans.decoder.ValueObject;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class ListEvent {
     private List<Event> events;
 
     public ListEvent() {
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
 
     public List<Event> getEvents() {

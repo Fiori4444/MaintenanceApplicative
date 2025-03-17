@@ -9,6 +9,6 @@ public class NewEvent extends Event {
     }
 
     public String description() {
-        return "Events.NewEvent : " + title + " à " + dateDebut.toString();
+        return "NewEvent : " + title.getTitle() + " à " + dateDebut.getDateDebut().toString();
     }
 }

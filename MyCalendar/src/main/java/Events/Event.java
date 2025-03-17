@@ -10,10 +10,10 @@ public abstract class Event {
     public DureeEvenement dureeMinutes;
 
     public Event(String title, String proprietaire, LocalDateTime dateDebut, int dureeMinutes) {
-        this.title.setTitle(title);
-        this.proprietaire.setProprietaire(proprietaire);
-        this.dateDebut.setDateDebut(dateDebut);
-        this.dureeMinutes.setDureeMinutes(dureeMinutes);
+        this.title = new TitreEvenement(title);
+        this.proprietaire = new ProprietaireEvenement(proprietaire);
+        this.dateDebut = new DateDebut(dateDebut);
+        this.dureeMinutes = new DureeEvenement(dureeMinutes);
     }
 
     public abstract String description();

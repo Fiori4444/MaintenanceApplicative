@@ -9,6 +9,6 @@ public class PersonnelEvent extends Event {
     }
 
     public String description() {
-        return "RDV : " + title + " à " + dateDebut.toString();
+        return "RDV : " + title.getTitle() + " à " + dateDebut.getDateDebut().toString();
     }
 }
