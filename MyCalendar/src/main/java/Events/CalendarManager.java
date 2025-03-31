@@ -2,6 +2,10 @@ package Events;
 
 import ValueObjects.ListEvent;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CalendarManager {
     public ListEvent events;
 
@@ -17,5 +21,9 @@ public class CalendarManager {
         for (Event e : events.getEvents()) {
             System.out.println(e.description());
         }
+    }
+
+    public List<Event> eventDansPeriode(LocalDateTime start, LocalDateTime end) {
+        return null;
     }
 }
