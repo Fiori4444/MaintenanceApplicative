@@ -1,9 +1,6 @@
-import Events.Event;
-import ValueObjects.ListEvent;
+package Events;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import ValueObjects.ListEvent;
 
 public class CalendarManager {
     public ListEvent events;
