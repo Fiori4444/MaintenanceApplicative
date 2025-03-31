@@ -17,4 +17,12 @@ public abstract class Event {
     }
 
     public abstract String description();
+
+    public DateDebut getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(DateDebut dateDebut) {
+        this.dateDebut = dateDebut;
+    }
 }

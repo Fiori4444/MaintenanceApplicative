@@ -24,6 +24,8 @@ public class CalendarManager {
     }
 
     public List<Event> eventDansPeriode(LocalDateTime start, LocalDateTime end) {
-        return null;
+        return events.getEvents().stream()
+                .filter(event -> !event.getDateDebut().getDateDebut().isBefore(start) && !event.getDateDebut().getDateDebut().isAfter(end))
+                .collect(Collectors.toList());
     }
 }

@@ -1,10 +1,7 @@
 package Main;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 import Command.*;
 import Events.*;
@@ -36,6 +33,7 @@ public class Main {
         userMenuCommands.put("3", new AjouterReunionCommand(this, scanner));
         userMenuCommands.put("4", new AjouterEventPeriodiqueCommand(this, scanner));
         userMenuCommands.put("5", new SeDeconnecterCommand(this));
+        userMenuCommands.put("6", new AfficherEvenementsDansPeriodeCommand(this, scanner)); // New command
 
         while (true) {
             if (utilisateur == null) {
@@ -66,6 +64,7 @@ public class Main {
         System.out.println("3 - Ajouter une réunion");
         System.out.println("4 - Ajouter un évènement périodique");
         System.out.println("5 - Se déconnecter");
+        System.out.println("6 - Afficher événements dans une période"); // New menu option
         System.out.print("Votre choix : ");
     }
 
@@ -189,5 +188,18 @@ public class Main {
         utilisateur = null;
         continuer = false;
         System.out.println("Déconnexion réussie.");
+    }
+
+    public void afficherEvenementsDansPeriode(Scanner scanner) {
+        System.out.print("Date de début (AAAA-MM-JJTHH:MM) : ");
+        LocalDateTime start = LocalDateTime.parse(scanner.nextLine());
+        System.out.print("Date de fin (AAAA-MM-JJTHH:MM) : ");
+        LocalDateTime end = LocalDateTime.parse(scanner.nextLine());
+
+        List<Event> events = calendar.eventDansPeriode(start, end);
+        System.out.println("Événements dans la période :");
+        for (Event event : events) {
+            System.out.println(event.description());
+        }
     }
 }
